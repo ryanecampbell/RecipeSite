@@ -1,12 +1,23 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
+using System.Linq;
 
 namespace RecipeSite.Models
 {
+    public enum MealType
+    {
+        None,
+        Breakfast,
+        Lunch,
+        Dinner,
+        Dessert
+    }
+
     public class Recipe
     {
-        public int ID { get; set; }
+        [Key]
+        public int RecipeID { get; set; }
 
         [StringLength(60, MinimumLength = 3)]
         public string Title { get; set; }
@@ -28,10 +39,15 @@ namespace RecipeSite.Models
         [RegularExpression(@"^[A-Z]+[a-zA-Z'\s]*$")]
         [StringLength(5)]
         public string Rating { get; set; }
-    }
 
-    public class RecipeDBContext : DbContext
-    {
-        public DbSet<Recipe> Recipes { get; set; }
+        public decimal PrepTime { get; set; }
+
+        public decimal CookTime { get; set; }
+
+        public MealType MealType { get; set; }
+
+        public virtual IQueryable<RecipeLine> RecipeLines { get; set; }
+
+        public virtual IQueryable<Instruction> Instructions { get; set; }
     }
 }

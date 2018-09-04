@@ -56,9 +56,9 @@
             @Html.DisplayFor(modelItem => item.Rating)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            @Html.ActionLink("Edit", "Edit", new { id = item.RecipeID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.RecipeID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.RecipeID })
         </td>
     </tr>
 }
